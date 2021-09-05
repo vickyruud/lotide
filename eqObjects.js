@@ -3,21 +3,27 @@ const eqArrays = require("./eqArrays");
 
 
 const eqObjects = function(object1, object2) {
-  let output = true;
-  let array1 = Object.keys(object1);
-  let array2 = Object.keys(object2);
-  if (array1.length !== array2.length){
-    output = output && false;
-  }else for(let key in object1){
-    if(Array.isArray(object1[key]) && Array.isArray(object2[key])){
-      output = output && (eqArrays(object1[key], object2[key]));
-    }else if(typeof object1[key]=== "object" || typeof(object2[key]) === "object"){
-      output = output && eqObjects(object1[key], object2[key]);
-    }else if (object1[key] !== object2[key]) output = output && false;
+  let keys1 = Object.keys(object1);
+  let keys2 = Object.keys(object2);
+  let output = false;
+  if (keys1.length === keys2.length) {
+    keys1.forEach(element => {
+      if (keys2.includes(element) && object1[element] === object2[element]) {
+        output = true;
+      } else if (Array.isArray(object1[element] && Array.isArray(object2[element]))) {
+        output = eqArrays(object1[element], object2[element]);
+      } else {
+        output = false;
+      }
+    });
   }
   return output;
   };
 
-console.log(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }) );
+  console.log(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })) // => true
+  console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })) // => false
+  console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 })) // => false
+  console.log(eqObjects({ a: { z: { d: 3 } } }, { a: { y: { d: 3 } } }));
+
 
 module.exports = eqObjects
