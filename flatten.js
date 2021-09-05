@@ -1,21 +1,17 @@
-const assertArraysEqual = require("./assertArraysEqual")
 
-let tempArray = [];
-let flattened = [];
-const flatten = function (toFlatten) {
-  for(i = 0; i < toFlatten.length; i++){
-    if(Array.isArray(toFlatten[i] && i < toFlatten.length -1)){
-      tempArray += toFlatten[i].slice()+ ',';
-    }else if(i < toFlatten.length -1){
-      tempArray += (toFlatten[i]) +',';
-    }else{
-      tempArray += (toFlatten[i]);
-    };
-  };
-  flattened = tempArray.split`,`.map(x=>+x);
-return flattened;
-};
+function flatten(toFlatten) {
+  const result = [];
 
-console.log(assertArraysEqual(flatten([1, 2, [3, 4], 5, [6]]), [1,2,3,4,5,6,7])); // => [1, 2, 3, 4, 5, 6])
+  toFlatten.forEach(item => {
+    if (Array.isArray(item)) {
+      result.push(...flatten(item)); //  "..." pushes all elements froms second array to the first
+    } else {
+      result.push(item);
+    }
+  });
+
+  return result;
+}
+
 
 module.exports = flatten;
