@@ -1,26 +1,24 @@
-function countLetters( str )
-{
+const countLetters = (str) =>{
   let result = {};
   let char = '';
-  let count = 0; 
+  let count = 0;
   // checking string is valid or not
-  if( str.length == 0 )
-  {
-    console.log("Invalid string")
+  if (str.length === 0) {
+    console.log("Invalid string");
     return;
   }
- // for loop to iterate over the string
+  // for loop to iterate over the string
  
-  for( let i = 0 ;i < str.length ;i++) {
+  for (let i = 0; i < str.length; i++) {
     char = str.charAt(i);
-    count = str.split(char).length-1
+    count = str.split(char).length - 1;
     result[char] = count;
   }
   delete result[' '];
   return result;
   
  
-}
+};
 console.log(countLetters("lighthouse in the house"));
 
-module.exports = countLetters
+module.exports = countLetters;

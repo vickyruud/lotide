@@ -1,5 +1,4 @@
-
-function flatten(toFlatten) {
+const flatten = (toFlatten) => {
   const result = [];
 
   toFlatten.forEach(item => {
@@ -11,7 +10,7 @@ function flatten(toFlatten) {
   });
 
   return result;
-}
+};
 
 
 module.exports = flatten;

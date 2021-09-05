@@ -1,9 +1,9 @@
 const takeUntil = function(array, callback) {
   let result = [];
-  for(let item of array){
-    if(!callback(item)){
+  for (let item of array) {
+    if (!callback(item)) {
       result.push(item);
-    }else{
+    } else {
       break;
     }
   }

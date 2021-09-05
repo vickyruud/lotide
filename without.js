@@ -6,11 +6,6 @@ const without = function(source, itemsToRemove) {
     }
   }
   return result;
-  };
-
-  let isEqual = '';
-
-
-
+};
 
 module.exports = without;
