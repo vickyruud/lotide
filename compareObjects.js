@@ -14,3 +14,5 @@ function shallowEqual(object1, object2) {
 
   return true;
 }
+
+module.exports = shallowEqual

@@ -2,7 +2,6 @@ const assertArraysEqual = require("./assertArraysEqual")
 
 const letterPositions = function(sentence) {
   const finalObject = {};
-  // logic to update results here
   for (let i = 0; i < sentence.length; i++) {
     if (sentence[i] !== " ") {
       if (finalObject[sentence[i]]) {
@@ -14,8 +13,6 @@ const letterPositions = function(sentence) {
   }
   return finalObject;
 };
-// console.log(letterPositions('Hello'));
 
-console.log(letterPositions('Hello World'));
 
-assertArraysEqual(letterPositions("hello").e, [1]);
+module.exports = letterPositions;
