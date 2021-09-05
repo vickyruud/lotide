@@ -3,7 +3,7 @@ const flatten = (toFlatten) => {
 
   toFlatten.forEach(item => {
     if (Array.isArray(item)) {
-      result.push(...flatten(item)); //  "..." pushes all elements froms second array to the first
+      result.push(...flatten(item)); //  "..." pushes all elements from second array to the first
     } else {
       result.push(item);
     }
